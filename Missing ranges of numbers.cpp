@@ -1,0 +1,53 @@
+/*input
+3
+5
+62 8 34 5 332 
+4
+13 0 32 500
+5
+2 0 9 15 999
+*/
+
+/*~~~~~~~~~~~~~~~~~~~~dwij28 == Abhinav Jha~~~~~~~~~~~~~~~~~~~~*/
+
+#include <bits/stdc++.h>
+#define ll long long
+#define pb push_back
+#define mp make_pair
+#define MAX(a, b) ((a > b) ? a : b)
+#define MIN(a, b) ((a < b) ? a : b)
+#define set_bit(n, x, i) (n ^ ((-x ^ n) & (1 << i)))
+#define get_bit(n, i) ((n >> i) & 1) 
+using namespace std;
+ 
+template<typename T>void scan(T&x){bool n=false;register T c=getchar();x=0;if(c=='-'){n=true;c=getchar();}for(;(c>47&&c<58);c=getchar()){x=(x<<1)+(x<<3)+c-48;}if(n){x*=-1;}}
+template<typename T>void allocate(T **x,T n){*x=(T*)malloc(sizeof(T)*n);}
+
+int main() {
+	int t, n, x;
+	bool data [1010];
+	scanf("%d", &t);
+	while (t--) {
+		scanf("%d", &n);
+		memset(data, false, sizeof(data));
+		for (int i = 0; i < n; i++) {
+			scanf("%d", &x);
+			data[x] = true;
+		}
+		int i = 0, j;
+		printf("[ ");
+		while (i < 1000) {
+			if (!data[i]) {
+				j = i;
+				while (i < 1000 && !data[i]) {
+					i++;
+				}
+				if (j == i-1) printf("%d ", j);
+				else printf("%d-%d ", j, i-1);
+			}
+			i++;
+		}
+		printf("]\n");
+	}
+	return 0;
+}
